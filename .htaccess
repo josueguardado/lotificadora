@@ -1,0 +1,19 @@
+DirectoryIndex index.html index.shtml index.xhtml index.wml index.perl index.pl index.plx index.ppl index.cgi index.jsp index.js index.jp index.php4 index.php3 index.php index.phtml index.htm home.htm default.htm index.fcgi default.html
+<IfModule mod_rewrite.c>
+
+ # allow_override On
+ # mod_rewrite is installed
+ 
+ RewriteEngine on
+ RewriteCond %{REQUEST_FILENAME} !-f
+ RewriteCond %{REQUEST_FILENAME} !-d
+
+ <IfModule mod_php5.c>
+     RewriteRule ^(.*)$ index.php/$1 [L]
+ </IfModule>
+
+ <IfModule !mod_php5.c>
+     RewriteRule ^(.*)$ index.php?/$1 [L]
+ </IfModule>
+ 
+</IfModule>
